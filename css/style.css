@@ -1,0 +1,391 @@
+/* === Reset & Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Top Header === */
+.top-bar {
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 0 10px;
+}
+
+.scrolling-message {
+  white-space: nowrap;
+  display: inline-block;
+  animation: scroll-left-right 6s ease-in-out infinite, slow-shake 4s ease-in-out infinite;
+}
+
+@keyframes scroll-left-right {
+  0% {
+    transform: translateX(-30%);
+  }
+  50% {
+    transform: translateX(30%);
+  }
+  100% {
+    transform: translateX(-30%);
+  }
+}
+
+@keyframes slow-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-0.5deg); }
+  50% { transform: translateX(2px) rotate(0.5deg); }
+  75% { transform: translateX(-2px) rotate(-0.5deg); }
+}
+
+/* === Body Base === */
+body {
+  padding-top: 50px; /* Adjusted to prevent top-bar overlap */
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #fafafa, #eaeaea);
+  color: #333;
+   padding: 50px 20px 110px;
+  min-height: 100vh;
+  position: relative;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+body::before {
+  /* your existing radial-gradient circle */
+  content: "";
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, #ff5722 0%, transparent 70%);
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+body::after {
+  /* new TikTok logo repeating banner */
+  content: "";
+  position: fixed;
+  top: 40px; /* below top-bar */
+  left: 0;
+  right: 0;
+  height: 80px;
+  background-image: url('saleslogo.webp');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 60px auto;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+}
+
+
+
+
+
+/* === Header === */
+header {
+  padding: 30px 0 10px;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+header p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* === Hero Section === */
+.hero {
+  margin-top: 30px;
+}
+
+.hero img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* Enlarged product description text – only targets <p> that is NOT .price */
+.hero p:not(.price) {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #000; /* black text for description */
+}
+
+/* Highlighted Price */
+.price {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #cf3008;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  margin: 20px 0 15px;
+  animation: pulse-price 2s ease-in-out infinite;
+}
+
+@keyframes pulse-price {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* TikTok Button Style */
+.tiktok-btn {
+  background-color: #000;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 transparent;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  animation: slow-shake 0.6s ease-in-out infinite;
+}
+
+.tiktok-btn:hover,
+.tiktok-btn:focus {
+  box-shadow:
+    0 0 12px rgba(255, 0, 102, 0.6),
+    0 0 12px rgba(0, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.tiktok-icon {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
+/* === SEO Content === */
+.seo-content {
+  margin: 50px auto 0;
+  padding: 20px 30px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  max-width: 700px;
+  text-align: left;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.seo-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #222;
+  font-weight: 700;
+}
+
+.seo-content h3 {
+  font-size: 1.2rem;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  color: #d91616; /* Accent color */
+  font-weight: 600;
+}
+
+.seo-content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.seo-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.seo-content ul li {
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* Optional: Add subtle hover effect on list items */
+.seo-content ul li:hover {
+  color: #d91616;
+  transition: color 0.3s ease;
+}
+
+
+
+/* === Review Section === */
+.review-section {
+  margin: 60px auto 40px;
+  padding: 20px 30px;
+  background-color: #fff8f8;
+  border-radius: 8px;
+  max-width: 700px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.review-section h2 {
+  font-size: 1.8rem;
+  color: #d91616;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.reviews-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+}
+
+/* Images in reviews */
+.review-item img {
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Video in reviews */
+.review-item video {
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Text below each review */
+.review-item p {
+  font-size: 1rem;
+  color: #444;
+  max-width: 600px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .reviews-wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .review-item {
+    flex: 1 1 300px;
+    max-width: 320px;
+  }
+}
+
+
+
+
+/* === Footer === */
+footer p {
+  font-weight: 700;       /* makes text bold */
+  font-size: 1rem;        /* slightly bigger if you want */
+  color: #fff;            /* brighter white for better contrast */
+  text-shadow: 0 0 4px rgba(0,0,0,0.7); /* subtle shadow for depth */
+  letter-spacing: 0.05em; /* small spacing for clarity */
+  margin-bottom: 6px;     /* spacing below text before social icons */
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  color: #ddd;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  z-index: 100;
+}
+/* === Social Links Below Footer === */
+.social-links {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-links a {
+  font-size: 28px; /* bigger icons */
+  opacity: 0.8;
+  transition: transform 0.3s ease, opacity 0.3s ease, color 0.3s ease;
+  color: inherit; /* fallback */
+}
+
+/* Facebook main blue */
+.social-links a[href*="facebook"] {
+  color: #1877F2;
+}
+
+/* Instagram gradient color approximation */
+.social-links a[href*="instagram"] {
+  color: #E1306C;
+}
+
+/* TikTok main black/red/cyan simplified as TikTok pink */
+.social-links a[href*="tiktok"] {
+  color: #69C9D0;
+}
+
+/* Hover effect: full opacity + scale */
+.social-links a:hover {
+  opacity: 1;
+  transform: scale(1.3);
+}
